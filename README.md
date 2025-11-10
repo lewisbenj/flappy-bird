@@ -41,7 +41,7 @@ The game is built using a simple, modern web stack:
 
 1.  **Clone the Repository:**
     ```bash
-    git clone [Your Repository URL]
+    git clone https://github.com/lewisbenj/flappy-bird.git
     cd hyper-difficult-flappy-bird
     ```
 2.  **Open `index.html`:** Simply open the `index.html` file in your web browser (Chrome, Firefox, etc.).
