@@ -288,4 +288,13 @@ const canvas = document.getElementById('gameCanvas');
             }
         });
 
+
         gameLoop();
+
+
+
+
+
+
+
+//uocgicoaylacuatoi=)))
