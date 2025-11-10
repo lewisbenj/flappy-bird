@@ -1,4 +1,4 @@
-const canvas = document.getElementById('gameCanvas');
+ const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
         
         // Set canvas size
@@ -24,7 +24,7 @@ const canvas = document.getElementById('gameCanvas');
             width: 40,
             height: 35,
             velocity: 0,
-            gravity: 0.7,  // Tăng trọng lực
+            gravity: 0.7,  // Tăng trọng lực 
             jump: -12,     // Lực nhảy mạnh hơn
             rotation: 0,
             color: '#FFD700'
@@ -34,9 +34,9 @@ const canvas = document.getElementById('gameCanvas');
         let pipes = [];
         const pipeWidth = 80;
         const pipeGap = 140;  // Khoảng trống 
-        const pipeSpeed = 4;  // Tốc độ nhanh hơn
+        const pipeSpeed = 4;  // Tốc độ 
         let pipeTimer = 0;
-        const pipeInterval = 90; // Ống xuất hiện 
+        const pipeInterval = 90; // Ống xuất hiện
 
         // Background elements
         let clouds = [];
@@ -98,19 +98,23 @@ const canvas = document.getElementById('gameCanvas');
             gradient.addColorStop(0.5, '#4cae4c');
             gradient.addColorStop(1, '#3d8b3d');
 
+            // Top pipe
             ctx.fillStyle = gradient;
             ctx.fillRect(pipe.x, 0, pipeWidth, pipe.topHeight);
             ctx.strokeStyle = '#2d6b2d';
             ctx.lineWidth = 4;
             ctx.strokeRect(pipe.x, 0, pipeWidth, pipe.topHeight);
 
+            // Top pipe cap
             ctx.fillRect(pipe.x - 5, pipe.topHeight - 30, pipeWidth + 10, 30);
             ctx.strokeRect(pipe.x - 5, pipe.topHeight - 30, pipeWidth + 10, 30);
 
+            // Bottom pipe
             ctx.fillStyle = gradient;
             ctx.fillRect(pipe.x, pipe.topHeight + pipeGap, pipeWidth, canvas.height);
             ctx.strokeRect(pipe.x, pipe.topHeight + pipeGap, pipeWidth, canvas.height);
 
+            // Bottom pipe cap
             ctx.fillRect(pipe.x - 5, pipe.topHeight + pipeGap, pipeWidth + 10, 30);
             ctx.strokeRect(pipe.x - 5, pipe.topHeight + pipeGap, pipeWidth + 10, 30);
         }
@@ -133,9 +137,11 @@ const canvas = document.getElementById('gameCanvas');
         }
 
         function drawGround() {
+            // Ground
             ctx.fillStyle = '#DEB887';
             ctx.fillRect(0, canvas.height - 80, canvas.width, 80);
 
+            // Ground pattern
             ctx.fillStyle = '#D2691E';
             for (let i = 0; i < canvas.width / 40 + 1; i++) {
                 const x = (i * 40 + groundX) % canvas.width;
@@ -152,6 +158,7 @@ const canvas = document.getElementById('gameCanvas');
             bird.velocity += bird.gravity;
             bird.y += bird.velocity;
 
+            // Rotation based on velocity
             bird.rotation = Math.min(Math.PI / 4, bird.velocity * 0.05);
 
             // Check boundaries
@@ -203,6 +210,7 @@ const canvas = document.getElementById('gameCanvas');
                     }
                 }
 
+                // Collision detection
                 if (
                     bird.x + bird.width > pipe.x &&
                     bird.x < pipe.x + pipeWidth &&
@@ -211,6 +219,7 @@ const canvas = document.getElementById('gameCanvas');
                     gameOver();
                 }
 
+                // Remove off-screen pipes
                 if (pipe.x < -pipeWidth) {
                     pipes.splice(index, 1);
                 }
@@ -256,16 +265,22 @@ const canvas = document.getElementById('gameCanvas');
         }
 
         function gameLoop() {
+            // Clear canvas
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+            // Draw background elements
             drawClouds();
             
+            // Draw pipes
             pipes.forEach(drawPipe);
 
+            // Draw bird
             drawBird();
 
+            // Draw ground
             drawGround();
 
+            // Update game state
             if (gameActive && gameStarted) {
                 updateBird();
                 updatePipes();
@@ -282,19 +297,22 @@ const canvas = document.getElementById('gameCanvas');
         });
 
         document.addEventListener('keydown', (e) => {
-            if (e.code === 'Space') {
+            if (e.code === 'Space' || e.code === 'Enter') {
                 e.preventDefault();
-                jump();
+                
+                // Nếu đang ở màn hình start hoặc game over, bắt đầu game
+                if (document.getElementById('startScreen').style.display !== 'none') {
+                    startGame();
+                } else if (document.getElementById('gameOverScreen').style.display !== 'none') {
+                    restartGame();
+                } else if (gameActive) {
+                    // Nếu đang chơi thì nhảy
+                    jump();
+                }
             }
         });
 
-
+        // Start game loop
         gameLoop();
 
-
-
-
-
-
-
-//uocgicoaylacuatoi=)))
+//uocgicoaylacuatoi=))
