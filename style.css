@@ -1,0 +1,163 @@
+  * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial Black', sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(180deg, #4ec0ca 0%, #87ceeb 50%, #e0f6ff 100%);
+        }
+
+        #gameContainer {
+            position: relative;
+            max-width: 800px;
+            width: 100%;
+            height: 600px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.3);
+        }
+
+        #gameCanvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #4ec0ca 0%, #87ceeb 60%, #ded895 100%);
+            cursor: pointer;
+        }
+
+        #score {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 64px;
+            color: white;
+            text-shadow: 4px 4px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
+            z-index: 10;
+            font-weight: bold;
+        }
+
+        #highScore {
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: #ffd700;
+            text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+            z-index: 10;
+        }
+
+        #startScreen, #gameOverScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        #startScreen h1, #gameOverScreen h1 {
+            font-size: 56px;
+            color: #ffd700;
+            text-shadow: 4px 4px 0 #000;
+            margin-bottom: 20px;
+            animation: bounce 1s infinite;
+        }
+
+        #startScreen p, #gameOverScreen p {
+            font-size: 24px;
+            color: white;
+            text-shadow: 2px 2px 0 #000;
+            margin: 10px 0;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .difficulty {
+            color: #ff4444;
+            font-size: 28px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        button {
+            margin-top: 30px;
+            padding: 20px 50px;
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(180deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            border: 4px solid #2d6b2f;
+            border-radius: 15px;
+            cursor: pointer;
+            text-shadow: 2px 2px 0 #000;
+            transition: all 0.2s;
+            box-shadow: 0 6px 0 #2d6b2f;
+        }
+
+        button:hover {
+            background: linear-gradient(180deg, #5bc95f 0%, #4CAF50 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 0 #2d6b2f;
+        }
+
+        button:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #2d6b2f;
+        }
+
+        .warning {
+            color: #ff3333;
+            font-size: 20px;
+            font-weight: bold;
+            animation: pulse 0.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        #instructions {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 18px;
+            color: white;
+            text-shadow: 2px 2px 0 #000;
+            text-align: center;
+            z-index: 10;
+        }
+
+        @media (max-width: 768px) {
+            #gameContainer {
+                height: 100vh;
+            }
+            #score {
+                font-size: 48px;
+            }
+            #startScreen h1, #gameOverScreen h1 {
+                font-size: 40px;
+            }
+            button {
+                font-size: 24px;
+                padding: 15px 40px;
+            }
+        }

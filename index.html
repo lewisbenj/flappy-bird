@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flappy Bird Siêu Khó</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="gameContainer">
+        <canvas id="gameCanvas"></canvas>
+        
+        <div id="score">0</div>
+        <div id="highScore">Kỷ lục: 0</div>
+        
+        <div id="instructions">
+            Nhấp chuột hoặc chạm màn hình để bay
+        </div>
+
+        <div id="startScreen">
+            <h1>🐦 FLAPPY BIRD 🐦</h1>
+            <p class="difficulty">⚠️ CHẾ ĐỘ SIÊU KHÓ ⚠️</p>
+            <p>• Ống chướng ngại vật hẹp hơn</p>
+            <p>• Trọng lực mạnh hơn</p>
+            <p>• Tốc độ nhanh hơn</p>
+            <p>• Ống di chuyển lên xuống</p>
+            <p class="warning">Chúc may mắn! Bạn sẽ cần đến nó 😈</p>
+            <button onclick="startGame()">BẮT ĐẦU THÁCH THỨC</button>
+        </div>
+
+        <div id="gameOverScreen" style="display: none;">
+            <h1>💀 GAME OVER 💀</h1>
+            <p style="font-size: 36px; color: #ffd700;">Điểm: <span id="finalScore">0</span></p>
+            <p style="font-size: 24px;">Kỷ lục: <span id="finalHighScore">0</span></p>
+            <button onclick="restartGame()">THỬ LẠI</button>
+        </div>
+    </div>
+</body>
+</html>
